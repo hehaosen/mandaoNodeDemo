@@ -32,7 +32,7 @@ var note = {
 
         /** 发送信息 0 为失败 1为成功 */
 
-        state : 0
+        status : 0
     },
     /**
      * 发送短信
@@ -90,7 +90,7 @@ var note = {
                     parseString(res.req.res.text, function (err, result) {
 
                         if (result.string._ > 0) {
-                            _self.conf.state = 1;
+                            _self.conf.status = 1;
                             _self.conf.msg = '发送成功';
                         }else{
                             _self.conf.msg = '发送短信失败:错误代码:' + result.string._ ;
@@ -98,7 +98,7 @@ var note = {
                     });
                 }
                 callback({
-                    state : _self.conf.state,
+                    status : _self.conf.status,
                     msg : _self.conf.msg
                 });
             });
